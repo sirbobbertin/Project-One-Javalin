@@ -6,6 +6,12 @@ public class ManagerPojo {
 	private String password;
 	private String address;
 	
+	
+	public ManagerPojo(){
+		
+	}
+	
+	
 	public int getId() {
 		return id;
 	}

@@ -30,10 +30,6 @@ public class ReimburstServiceImpl implements ReimburstService {
 		return allReimburstment;
 	}
 
-	@Override
-	public ReimburstPojo getAReimburst(int reimburstId) throws ApplicationException {
-		return null;
-	}
 	
 	@Override
 	public List<ReimburstPojo> getUserReimburstments(int userId) throws ApplicationException {
@@ -62,6 +58,18 @@ public class ReimburstServiceImpl implements ReimburstService {
 	@Override
 	public List<ReimburstPojo> getPendingReimburstments() throws ApplicationException {
 		return this.reimburstDao.getPendingReimburstments();
+	}
+
+
+
+	@Override
+	public ReimburstPojo getAReimburst(int reimburstId) throws ApplicationException {
+		return this.reimburstDao.getAReimburst(reimburstId);
+	}
+
+	@Override
+	public ReimburstPojo updateReimburst(ReimburstPojo reimburst) throws ApplicationException {
+		return this.reimburstDao.updateReimburst(reimburst);
 	}
 
 }

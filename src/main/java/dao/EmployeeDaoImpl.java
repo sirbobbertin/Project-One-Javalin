@@ -40,7 +40,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		try {
 			Connection conn = DBUtil.makeConnection();
 			stmt = conn.createStatement();
-			String query = "select * from employee_details where id = "+employeeId;
+			String query = "select * from employee_details where employee_id = "+employeeId;
 			ResultSet rs = stmt.executeQuery(query);
 			
 			if(rs.next())
@@ -67,7 +67,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next())
 			{employeePojo.setId(rs.getInt(1));
-			 employeePojo.setAddress(rs.getString(4));}
+			 employeePojo.setAddress(rs.getString(4));
+			 employeePojo.setJobType(rs.getInt(5));}
 			else {
 				String query2 = "select * from manager_details where username = '"+employeePojo.getUserName()+"' and password = '"+employeePojo.getPassword()+"'";
 				ResultSet rs1 = stmt.executeQuery(query2);

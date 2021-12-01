@@ -11,6 +11,7 @@ public interface ReimburstService {
 	List<ReimburstPojo> getResolvedReimburstments() throws ApplicationException;
 	List<ReimburstPojo> getPendingReimburstments() throws ApplicationException;
 	ReimburstPojo getAReimburst(int reimburstId) throws ApplicationException;
+	ReimburstPojo updateReimburst(ReimburstPojo reimburst) throws ApplicationException;
 	List<ReimburstPojo> getUserReimburstments(int userId) throws ApplicationException;
 	List<ReimburstPojo> getUserResolvedReimburstments(int userId) throws ApplicationException;
 	List<ReimburstPojo> getUserPendingReimburstments(int userId) throws ApplicationException;

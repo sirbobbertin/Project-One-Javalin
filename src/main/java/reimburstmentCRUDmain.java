@@ -18,15 +18,7 @@ public class reimburstmentCRUDmain {
 		Javalin server = Javalin.create((config) -> config.enableCorsForAllOrigins()).start(4041);
 		
 		
-		//pathParam - http://localhost:4040/api/books/5/Comedy
-		//queryParam - http://localhost:4040/api/books/bookId=5&bookGenre=Comedy
 		
-		//http://localhost:4041/hello
-		server.get("hello", (ctx) -> {
-			// tell here what to do when the hello endpoint is requested for
-			System.out.println("Hello endpoint is requested!!");
-			ctx.result("Hello endpoint is requested!!");
-		});
 
 		//get all reimburstments
 		server.get("api/reimburstments" , (ctx) -> {
@@ -52,11 +44,20 @@ public class reimburstmentCRUDmain {
 		server.get("api/reimburstments/{eid}" , (ctx) -> {
 			ctx.json(reimburstService.getUserReimburstments(Integer.parseInt(ctx.pathParam("eid"))));
 				});
+		//get a Reimburstment
+		server.get("api/reimburstments/single/{rid}" , (ctx) -> {
+			ctx.json(reimburstService.getAReimburst(Integer.parseInt(ctx.pathParam("rid"))));
+				});
+		//update Reimburstment
+		server.put("api/reimburstments/update/{rid}", (ctx) -> {
+			ReimburstPojo returnReimburstPojo = reimburstService.updateReimburst(ctx.bodyAsClass(ReimburstPojo.class));
+			ctx.json(returnReimburstPojo);
+			});
+		
 		
 		// to add reimburstments
 		server.post("api/reimburstments", (ctx) -> {
 			ReimburstPojo returnReimburstPojo = reimburstService.addReimburst(ctx.bodyAsClass(ReimburstPojo.class));
-			System.out.println(ctx.json(returnReimburstPojo));
 			ctx.json(returnReimburstPojo);
 		});
 				
@@ -75,10 +76,10 @@ public class reimburstmentCRUDmain {
 		//validate User
 		server.post("api/employees", (ctx) -> {
 			EmployeePojo returnEmployeePojo = employeeService.validateUser(ctx.bodyAsClass(EmployeePojo.class));
-			System.out.println(ctx.json(returnEmployeePojo));
 			ctx.json(returnEmployeePojo);
 		});
 		
+
 
 }
 }

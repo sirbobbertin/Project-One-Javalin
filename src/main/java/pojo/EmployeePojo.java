@@ -11,7 +11,7 @@ public class EmployeePojo {
 	
 	
 	
-	EmployeePojo()
+	public EmployeePojo()
 	{
 		id=0;
 		username =" ";

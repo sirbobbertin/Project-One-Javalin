@@ -15,6 +15,7 @@ public interface ReimburstDao {
 	List<ReimburstPojo> getResolvedReimburstments() throws ApplicationException;
 	List<ReimburstPojo> getPendingReimburstments() throws ApplicationException;
 	ReimburstPojo getAReimburst(int reimburstId) throws ApplicationException;
+	ReimburstPojo updateReimburst(ReimburstPojo reimburst) throws ApplicationException;
 	void exitApplication();
 	
 }
